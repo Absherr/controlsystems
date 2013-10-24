@@ -1,5 +1,5 @@
 controlsystems
 ==============
 
-Repo for Control Systems course at Jagiellonian University
+Repo for <b>Control Systems</b> course at Jagiellonian University. <br>
 Sources are in C or asm and should work on ATmega32 microcontroller.
