@@ -1,0 +1,1030 @@
+
+labs52.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000006b2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  000006b2  00000746  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000054  0080006a  0080006a  00000750  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000750  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00000e1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00000eb3  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000058  00000000  00000000  00000ee2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000280  00000000  00000000  00000f3a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000134  00000000  00000000  000011ba  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000001e0  00000000  00000000  000012ee  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000150  00000000  00000000  000014d0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000162  00000000  00000000  00001620  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000002a7  00000000  00000000  00001782  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000048  00000000  00000000  00001a29  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_10>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 eb       	ldi	r30, 0xB2	; 178
+  68:	f6 e0       	ldi	r31, 0x06	; 6
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 36       	cpi	r26, 0x6A	; 106
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa e6       	ldi	r26, 0x6A	; 106
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 3b       	cpi	r26, 0xBE	; 190
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 16 03 	call	0x62c	; 0x62c <main>
+  8a:	0c 94 57 03 	jmp	0x6ae	; 0x6ae <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_10>:
+} TASK;
+
+TASK TASK_TABLE[TASK_SIZE];        // tablica zadan
+uint8_t task_count = 0;                // aktualna ilosc zadan w tablicy TASK_TABLE
+ISR(TIMER0_COMP_vect)
+{
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	00 90 5f 00 	lds	r0, 0x005F
+  9a:	0f 92       	push	r0
+  9c:	11 24       	eor	r1, r1
+  9e:	2f 93       	push	r18
+  a0:	3f 93       	push	r19
+  a2:	8f 93       	push	r24
+  a4:	9f 93       	push	r25
+  a6:	ef 93       	push	r30
+  a8:	ff 93       	push	r31
+  aa:	cf 93       	push	r28
+  ac:	df 93       	push	r29
+  ae:	00 d0       	rcall	.+0      	; 0xb0 <__vector_10+0x1e>
+  b0:	1f 92       	push	r1
+  b2:	cd b7       	in	r28, 0x3d	; 61
+  b4:	de b7       	in	r29, 0x3e	; 62
+	uint8_t i;
+	TASK *tsk;
+	for(i = 0; i<task_count; ++i)        // w przerwaniu dla kazdego zadania w liscie zadan
+  b6:	19 82       	std	Y+1, r1	; 0x01
+  b8:	6c c0       	rjmp	.+216    	; 0x192 <__vector_10+0x100>
+	{
+		tsk = TASK_TABLE + i;
+  ba:	89 81       	ldd	r24, Y+1	; 0x01
+  bc:	88 2f       	mov	r24, r24
+  be:	90 e0       	ldi	r25, 0x00	; 0
+  c0:	88 0f       	add	r24, r24
+  c2:	99 1f       	adc	r25, r25
+  c4:	88 0f       	add	r24, r24
+  c6:	99 1f       	adc	r25, r25
+  c8:	88 0f       	add	r24, r24
+  ca:	99 1f       	adc	r25, r25
+  cc:	82 59       	subi	r24, 0x92	; 146
+  ce:	9f 4f       	sbci	r25, 0xFF	; 255
+  d0:	9b 83       	std	Y+3, r25	; 0x03
+  d2:	8a 83       	std	Y+2, r24	; 0x02
+		if(tsk->interval != NON_PERIODIC)        // jesli zadanie jest periodyczne
+  d4:	8a 81       	ldd	r24, Y+2	; 0x02
+  d6:	9b 81       	ldd	r25, Y+3	; 0x03
+  d8:	fc 01       	movw	r30, r24
+  da:	82 81       	ldd	r24, Z+2	; 0x02
+  dc:	93 81       	ldd	r25, Z+3	; 0x03
+  de:	00 97       	sbiw	r24, 0x00	; 0
+  e0:	69 f1       	breq	.+90     	; 0x13c <__vector_10+0xaa>
+		{
+			tsk->togo--;                                // zmniejsz licznik pozostaly do zakonczenia oczekiwania
+  e2:	8a 81       	ldd	r24, Y+2	; 0x02
+  e4:	9b 81       	ldd	r25, Y+3	; 0x03
+  e6:	fc 01       	movw	r30, r24
+  e8:	84 81       	ldd	r24, Z+4	; 0x04
+  ea:	95 81       	ldd	r25, Z+5	; 0x05
+  ec:	9c 01       	movw	r18, r24
+  ee:	21 50       	subi	r18, 0x01	; 1
+  f0:	31 09       	sbc	r19, r1
+  f2:	8a 81       	ldd	r24, Y+2	; 0x02
+  f4:	9b 81       	ldd	r25, Y+3	; 0x03
+  f6:	fc 01       	movw	r30, r24
+  f8:	35 83       	std	Z+5, r19	; 0x05
+  fa:	24 83       	std	Z+4, r18	; 0x04
+			if(tsk->togo == 0)                        // i jesli zakonczono oczekiwanie to ustaw licznik na wartosc poczatkowa i oznacz jako gotowe do wykonania
+  fc:	8a 81       	ldd	r24, Y+2	; 0x02
+  fe:	9b 81       	ldd	r25, Y+3	; 0x03
+ 100:	fc 01       	movw	r30, r24
+ 102:	84 81       	ldd	r24, Z+4	; 0x04
+ 104:	95 81       	ldd	r25, Z+5	; 0x05
+ 106:	00 97       	sbiw	r24, 0x00	; 0
+ 108:	09 f0       	breq	.+2      	; 0x10c <__vector_10+0x7a>
+ 10a:	40 c0       	rjmp	.+128    	; 0x18c <__vector_10+0xfa>
+			{
+				tsk->togo = tsk->interval;
+ 10c:	8a 81       	ldd	r24, Y+2	; 0x02
+ 10e:	9b 81       	ldd	r25, Y+3	; 0x03
+ 110:	fc 01       	movw	r30, r24
+ 112:	22 81       	ldd	r18, Z+2	; 0x02
+ 114:	33 81       	ldd	r19, Z+3	; 0x03
+ 116:	8a 81       	ldd	r24, Y+2	; 0x02
+ 118:	9b 81       	ldd	r25, Y+3	; 0x03
+ 11a:	fc 01       	movw	r30, r24
+ 11c:	35 83       	std	Z+5, r19	; 0x05
+ 11e:	24 83       	std	Z+4, r18	; 0x04
+				tsk->ready++;
+ 120:	8a 81       	ldd	r24, Y+2	; 0x02
+ 122:	9b 81       	ldd	r25, Y+3	; 0x03
+ 124:	fc 01       	movw	r30, r24
+ 126:	86 81       	ldd	r24, Z+6	; 0x06
+ 128:	97 81       	ldd	r25, Z+7	; 0x07
+ 12a:	9c 01       	movw	r18, r24
+ 12c:	2f 5f       	subi	r18, 0xFF	; 255
+ 12e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 130:	8a 81       	ldd	r24, Y+2	; 0x02
+ 132:	9b 81       	ldd	r25, Y+3	; 0x03
+ 134:	fc 01       	movw	r30, r24
+ 136:	37 83       	std	Z+7, r19	; 0x07
+ 138:	26 83       	std	Z+6, r18	; 0x06
+ 13a:	28 c0       	rjmp	.+80     	; 0x18c <__vector_10+0xfa>
+			}
+		}
+		else if(tsk->togo > 0)                                // jesli jest aperiodyczne to zmniejsz licznik do konca oczekiwania i ewentualnie ustaw jako gotowe
+ 13c:	8a 81       	ldd	r24, Y+2	; 0x02
+ 13e:	9b 81       	ldd	r25, Y+3	; 0x03
+ 140:	fc 01       	movw	r30, r24
+ 142:	84 81       	ldd	r24, Z+4	; 0x04
+ 144:	95 81       	ldd	r25, Z+5	; 0x05
+ 146:	00 97       	sbiw	r24, 0x00	; 0
+ 148:	09 f1       	breq	.+66     	; 0x18c <__vector_10+0xfa>
+		{
+			tsk->togo--;
+ 14a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 14c:	9b 81       	ldd	r25, Y+3	; 0x03
+ 14e:	fc 01       	movw	r30, r24
+ 150:	84 81       	ldd	r24, Z+4	; 0x04
+ 152:	95 81       	ldd	r25, Z+5	; 0x05
+ 154:	9c 01       	movw	r18, r24
+ 156:	21 50       	subi	r18, 0x01	; 1
+ 158:	31 09       	sbc	r19, r1
+ 15a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 15c:	9b 81       	ldd	r25, Y+3	; 0x03
+ 15e:	fc 01       	movw	r30, r24
+ 160:	35 83       	std	Z+5, r19	; 0x05
+ 162:	24 83       	std	Z+4, r18	; 0x04
+			if(tsk->togo == 0)
+ 164:	8a 81       	ldd	r24, Y+2	; 0x02
+ 166:	9b 81       	ldd	r25, Y+3	; 0x03
+ 168:	fc 01       	movw	r30, r24
+ 16a:	84 81       	ldd	r24, Z+4	; 0x04
+ 16c:	95 81       	ldd	r25, Z+5	; 0x05
+ 16e:	00 97       	sbiw	r24, 0x00	; 0
+ 170:	69 f4       	brne	.+26     	; 0x18c <__vector_10+0xfa>
+			{
+				tsk->ready++;
+ 172:	8a 81       	ldd	r24, Y+2	; 0x02
+ 174:	9b 81       	ldd	r25, Y+3	; 0x03
+ 176:	fc 01       	movw	r30, r24
+ 178:	86 81       	ldd	r24, Z+6	; 0x06
+ 17a:	97 81       	ldd	r25, Z+7	; 0x07
+ 17c:	9c 01       	movw	r18, r24
+ 17e:	2f 5f       	subi	r18, 0xFF	; 255
+ 180:	3f 4f       	sbci	r19, 0xFF	; 255
+ 182:	8a 81       	ldd	r24, Y+2	; 0x02
+ 184:	9b 81       	ldd	r25, Y+3	; 0x03
+ 186:	fc 01       	movw	r30, r24
+ 188:	37 83       	std	Z+7, r19	; 0x07
+ 18a:	26 83       	std	Z+6, r18	; 0x06
+uint8_t task_count = 0;                // aktualna ilosc zadan w tablicy TASK_TABLE
+ISR(TIMER0_COMP_vect)
+{
+	uint8_t i;
+	TASK *tsk;
+	for(i = 0; i<task_count; ++i)        // w przerwaniu dla kazdego zadania w liscie zadan
+ 18c:	89 81       	ldd	r24, Y+1	; 0x01
+ 18e:	8f 5f       	subi	r24, 0xFF	; 255
+ 190:	89 83       	std	Y+1, r24	; 0x01
+ 192:	80 91 6c 00 	lds	r24, 0x006C
+ 196:	99 81       	ldd	r25, Y+1	; 0x01
+ 198:	98 17       	cp	r25, r24
+ 19a:	08 f4       	brcc	.+2      	; 0x19e <__vector_10+0x10c>
+ 19c:	8e cf       	rjmp	.-228    	; 0xba <__vector_10+0x28>
+			{
+				tsk->ready++;
+			}
+		}
+	}
+}
+ 19e:	0f 90       	pop	r0
+ 1a0:	0f 90       	pop	r0
+ 1a2:	0f 90       	pop	r0
+ 1a4:	df 91       	pop	r29
+ 1a6:	cf 91       	pop	r28
+ 1a8:	ff 91       	pop	r31
+ 1aa:	ef 91       	pop	r30
+ 1ac:	9f 91       	pop	r25
+ 1ae:	8f 91       	pop	r24
+ 1b0:	3f 91       	pop	r19
+ 1b2:	2f 91       	pop	r18
+ 1b4:	0f 90       	pop	r0
+ 1b6:	00 92 5f 00 	sts	0x005F, r0
+ 1ba:	0f 90       	pop	r0
+ 1bc:	1f 90       	pop	r1
+ 1be:	18 95       	reti
+
+000001c0 <addTask>:
+
+void addTask(void (*f)(),uint32_t timeout, uint32_t isPeriodic)        // dodawanie zadan do tablicy zadan
+{
+ 1c0:	0f 93       	push	r16
+ 1c2:	1f 93       	push	r17
+ 1c4:	cf 93       	push	r28
+ 1c6:	df 93       	push	r29
+ 1c8:	cd b7       	in	r28, 0x3d	; 61
+ 1ca:	de b7       	in	r29, 0x3e	; 62
+ 1cc:	2a 97       	sbiw	r28, 0x0a	; 10
+ 1ce:	0f b6       	in	r0, 0x3f	; 63
+ 1d0:	f8 94       	cli
+ 1d2:	de bf       	out	0x3e, r29	; 62
+ 1d4:	0f be       	out	0x3f, r0	; 63
+ 1d6:	cd bf       	out	0x3d, r28	; 61
+ 1d8:	9a 83       	std	Y+2, r25	; 0x02
+ 1da:	89 83       	std	Y+1, r24	; 0x01
+ 1dc:	4b 83       	std	Y+3, r20	; 0x03
+ 1de:	5c 83       	std	Y+4, r21	; 0x04
+ 1e0:	6d 83       	std	Y+5, r22	; 0x05
+ 1e2:	7e 83       	std	Y+6, r23	; 0x06
+ 1e4:	0f 83       	std	Y+7, r16	; 0x07
+ 1e6:	18 87       	std	Y+8, r17	; 0x08
+ 1e8:	29 87       	std	Y+9, r18	; 0x09
+ 1ea:	3a 87       	std	Y+10, r19	; 0x0a
+	if(task_count + 1<TASK_SIZE){        // jesli jest jeszcze miejsce w tablicy
+ 1ec:	80 91 6c 00 	lds	r24, 0x006C
+ 1f0:	88 2f       	mov	r24, r24
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	01 96       	adiw	r24, 0x01	; 1
+ 1f6:	8a 30       	cpi	r24, 0x0A	; 10
+ 1f8:	91 05       	cpc	r25, r1
+ 1fa:	0c f0       	brlt	.+2      	; 0x1fe <addTask+0x3e>
+ 1fc:	53 c0       	rjmp	.+166    	; 0x2a4 <addTask+0xe4>
+		cli();                                        // wylaczamy obsluge przerwan
+ 1fe:	f8 94       	cli
+		TASK_TABLE[task_count].function=f;
+ 200:	80 91 6c 00 	lds	r24, 0x006C
+ 204:	88 2f       	mov	r24, r24
+ 206:	90 e0       	ldi	r25, 0x00	; 0
+ 208:	88 0f       	add	r24, r24
+ 20a:	99 1f       	adc	r25, r25
+ 20c:	88 0f       	add	r24, r24
+ 20e:	99 1f       	adc	r25, r25
+ 210:	88 0f       	add	r24, r24
+ 212:	99 1f       	adc	r25, r25
+ 214:	82 59       	subi	r24, 0x92	; 146
+ 216:	9f 4f       	sbci	r25, 0xFF	; 255
+ 218:	29 81       	ldd	r18, Y+1	; 0x01
+ 21a:	3a 81       	ldd	r19, Y+2	; 0x02
+ 21c:	fc 01       	movw	r30, r24
+ 21e:	31 83       	std	Z+1, r19	; 0x01
+ 220:	20 83       	st	Z, r18
+		TASK_TABLE[task_count].togo=timeout;
+ 222:	80 91 6c 00 	lds	r24, 0x006C
+ 226:	88 2f       	mov	r24, r24
+ 228:	90 e0       	ldi	r25, 0x00	; 0
+ 22a:	2b 81       	ldd	r18, Y+3	; 0x03
+ 22c:	3c 81       	ldd	r19, Y+4	; 0x04
+ 22e:	88 0f       	add	r24, r24
+ 230:	99 1f       	adc	r25, r25
+ 232:	88 0f       	add	r24, r24
+ 234:	99 1f       	adc	r25, r25
+ 236:	88 0f       	add	r24, r24
+ 238:	99 1f       	adc	r25, r25
+ 23a:	8e 58       	subi	r24, 0x8E	; 142
+ 23c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 23e:	fc 01       	movw	r30, r24
+ 240:	31 83       	std	Z+1, r19	; 0x01
+ 242:	20 83       	st	Z, r18
+		TASK_TABLE[task_count].ready=0;
+ 244:	80 91 6c 00 	lds	r24, 0x006C
+ 248:	88 2f       	mov	r24, r24
+ 24a:	90 e0       	ldi	r25, 0x00	; 0
+ 24c:	88 0f       	add	r24, r24
+ 24e:	99 1f       	adc	r25, r25
+ 250:	88 0f       	add	r24, r24
+ 252:	99 1f       	adc	r25, r25
+ 254:	88 0f       	add	r24, r24
+ 256:	99 1f       	adc	r25, r25
+ 258:	8c 58       	subi	r24, 0x8C	; 140
+ 25a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 25c:	fc 01       	movw	r30, r24
+ 25e:	11 82       	std	Z+1, r1	; 0x01
+ 260:	10 82       	st	Z, r1
+		TASK_TABLE[task_count++].interval=(isPeriodic)?timeout:NON_PERIODIC;
+ 262:	40 91 6c 00 	lds	r20, 0x006C
+ 266:	24 2f       	mov	r18, r20
+ 268:	30 e0       	ldi	r19, 0x00	; 0
+ 26a:	8f 81       	ldd	r24, Y+7	; 0x07
+ 26c:	98 85       	ldd	r25, Y+8	; 0x08
+ 26e:	a9 85       	ldd	r26, Y+9	; 0x09
+ 270:	ba 85       	ldd	r27, Y+10	; 0x0a
+ 272:	00 97       	sbiw	r24, 0x00	; 0
+ 274:	a1 05       	cpc	r26, r1
+ 276:	b1 05       	cpc	r27, r1
+ 278:	19 f0       	breq	.+6      	; 0x280 <addTask+0xc0>
+ 27a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 27c:	9c 81       	ldd	r25, Y+4	; 0x04
+ 27e:	02 c0       	rjmp	.+4      	; 0x284 <addTask+0xc4>
+ 280:	80 e0       	ldi	r24, 0x00	; 0
+ 282:	90 e0       	ldi	r25, 0x00	; 0
+ 284:	22 0f       	add	r18, r18
+ 286:	33 1f       	adc	r19, r19
+ 288:	22 0f       	add	r18, r18
+ 28a:	33 1f       	adc	r19, r19
+ 28c:	22 0f       	add	r18, r18
+ 28e:	33 1f       	adc	r19, r19
+ 290:	20 59       	subi	r18, 0x90	; 144
+ 292:	3f 4f       	sbci	r19, 0xFF	; 255
+ 294:	f9 01       	movw	r30, r18
+ 296:	91 83       	std	Z+1, r25	; 0x01
+ 298:	80 83       	st	Z, r24
+ 29a:	84 2f       	mov	r24, r20
+ 29c:	8f 5f       	subi	r24, 0xFF	; 255
+ 29e:	80 93 6c 00 	sts	0x006C, r24
+		sei();                                        // wlaczamy przerwania
+ 2a2:	78 94       	sei
+	}
+}
+ 2a4:	2a 96       	adiw	r28, 0x0a	; 10
+ 2a6:	0f b6       	in	r0, 0x3f	; 63
+ 2a8:	f8 94       	cli
+ 2aa:	de bf       	out	0x3e, r29	; 62
+ 2ac:	0f be       	out	0x3f, r0	; 63
+ 2ae:	cd bf       	out	0x3d, r28	; 61
+ 2b0:	df 91       	pop	r29
+ 2b2:	cf 91       	pop	r28
+ 2b4:	1f 91       	pop	r17
+ 2b6:	0f 91       	pop	r16
+ 2b8:	08 95       	ret
+
+000002ba <setupTimer>:
+
+void setupTimer()        // inicjalizacja timera
+{
+ 2ba:	cf 93       	push	r28
+ 2bc:	df 93       	push	r29
+ 2be:	cd b7       	in	r28, 0x3d	; 61
+ 2c0:	de b7       	in	r29, 0x3e	; 62
+	TIMSK=0b00000010;
+ 2c2:	89 e5       	ldi	r24, 0x59	; 89
+ 2c4:	90 e0       	ldi	r25, 0x00	; 0
+ 2c6:	22 e0       	ldi	r18, 0x02	; 2
+ 2c8:	fc 01       	movw	r30, r24
+ 2ca:	20 83       	st	Z, r18
+	TCCR0=0b00000011;
+ 2cc:	83 e5       	ldi	r24, 0x53	; 83
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	23 e0       	ldi	r18, 0x03	; 3
+ 2d2:	fc 01       	movw	r30, r24
+ 2d4:	20 83       	st	Z, r18
+	OCR0=250;
+ 2d6:	8c e5       	ldi	r24, 0x5C	; 92
+ 2d8:	90 e0       	ldi	r25, 0x00	; 0
+ 2da:	2a ef       	ldi	r18, 0xFA	; 250
+ 2dc:	fc 01       	movw	r30, r24
+ 2de:	20 83       	st	Z, r18
+	sei();
+ 2e0:	78 94       	sei
+}
+ 2e2:	df 91       	pop	r29
+ 2e4:	cf 91       	pop	r28
+ 2e6:	08 95       	ret
+
+000002e8 <init_kernel>:
+void init_kernel()        // zapelnianie tablicy TASK_TABLE
+{
+ 2e8:	cf 93       	push	r28
+ 2ea:	df 93       	push	r29
+ 2ec:	1f 92       	push	r1
+ 2ee:	cd b7       	in	r28, 0x3d	; 61
+ 2f0:	de b7       	in	r29, 0x3e	; 62
+	uint8_t i;
+	task_count = 0;
+ 2f2:	10 92 6c 00 	sts	0x006C, r1
+	for(i=0;i<TASK_SIZE; ++i)
+ 2f6:	19 82       	std	Y+1, r1	; 0x01
+ 2f8:	3b c0       	rjmp	.+118    	; 0x370 <init_kernel+0x88>
+	{
+		TASK_TABLE[i].function = 0;
+ 2fa:	89 81       	ldd	r24, Y+1	; 0x01
+ 2fc:	88 2f       	mov	r24, r24
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	88 0f       	add	r24, r24
+ 302:	99 1f       	adc	r25, r25
+ 304:	88 0f       	add	r24, r24
+ 306:	99 1f       	adc	r25, r25
+ 308:	88 0f       	add	r24, r24
+ 30a:	99 1f       	adc	r25, r25
+ 30c:	82 59       	subi	r24, 0x92	; 146
+ 30e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 310:	fc 01       	movw	r30, r24
+ 312:	11 82       	std	Z+1, r1	; 0x01
+ 314:	10 82       	st	Z, r1
+		TASK_TABLE[i].interval = 0;
+ 316:	89 81       	ldd	r24, Y+1	; 0x01
+ 318:	88 2f       	mov	r24, r24
+ 31a:	90 e0       	ldi	r25, 0x00	; 0
+ 31c:	88 0f       	add	r24, r24
+ 31e:	99 1f       	adc	r25, r25
+ 320:	88 0f       	add	r24, r24
+ 322:	99 1f       	adc	r25, r25
+ 324:	88 0f       	add	r24, r24
+ 326:	99 1f       	adc	r25, r25
+ 328:	80 59       	subi	r24, 0x90	; 144
+ 32a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 32c:	fc 01       	movw	r30, r24
+ 32e:	11 82       	std	Z+1, r1	; 0x01
+ 330:	10 82       	st	Z, r1
+		TASK_TABLE[i].togo = 0;
+ 332:	89 81       	ldd	r24, Y+1	; 0x01
+ 334:	88 2f       	mov	r24, r24
+ 336:	90 e0       	ldi	r25, 0x00	; 0
+ 338:	88 0f       	add	r24, r24
+ 33a:	99 1f       	adc	r25, r25
+ 33c:	88 0f       	add	r24, r24
+ 33e:	99 1f       	adc	r25, r25
+ 340:	88 0f       	add	r24, r24
+ 342:	99 1f       	adc	r25, r25
+ 344:	8e 58       	subi	r24, 0x8E	; 142
+ 346:	9f 4f       	sbci	r25, 0xFF	; 255
+ 348:	fc 01       	movw	r30, r24
+ 34a:	11 82       	std	Z+1, r1	; 0x01
+ 34c:	10 82       	st	Z, r1
+		TASK_TABLE[i].ready = 0;
+ 34e:	89 81       	ldd	r24, Y+1	; 0x01
+ 350:	88 2f       	mov	r24, r24
+ 352:	90 e0       	ldi	r25, 0x00	; 0
+ 354:	88 0f       	add	r24, r24
+ 356:	99 1f       	adc	r25, r25
+ 358:	88 0f       	add	r24, r24
+ 35a:	99 1f       	adc	r25, r25
+ 35c:	88 0f       	add	r24, r24
+ 35e:	99 1f       	adc	r25, r25
+ 360:	8c 58       	subi	r24, 0x8C	; 140
+ 362:	9f 4f       	sbci	r25, 0xFF	; 255
+ 364:	fc 01       	movw	r30, r24
+ 366:	11 82       	std	Z+1, r1	; 0x01
+ 368:	10 82       	st	Z, r1
+}
+void init_kernel()        // zapelnianie tablicy TASK_TABLE
+{
+	uint8_t i;
+	task_count = 0;
+	for(i=0;i<TASK_SIZE; ++i)
+ 36a:	89 81       	ldd	r24, Y+1	; 0x01
+ 36c:	8f 5f       	subi	r24, 0xFF	; 255
+ 36e:	89 83       	std	Y+1, r24	; 0x01
+ 370:	89 81       	ldd	r24, Y+1	; 0x01
+ 372:	8a 30       	cpi	r24, 0x0A	; 10
+ 374:	10 f2       	brcs	.-124    	; 0x2fa <init_kernel+0x12>
+		TASK_TABLE[i].function = 0;
+		TASK_TABLE[i].interval = 0;
+		TASK_TABLE[i].togo = 0;
+		TASK_TABLE[i].ready = 0;
+	}
+}
+ 376:	0f 90       	pop	r0
+ 378:	df 91       	pop	r29
+ 37a:	cf 91       	pop	r28
+ 37c:	08 95       	ret
+
+0000037e <schedule>:
+
+void schedule()                // zarzadzanie zadaniami
+{
+ 37e:	cf 93       	push	r28
+ 380:	df 93       	push	r29
+ 382:	1f 92       	push	r1
+ 384:	cd b7       	in	r28, 0x3d	; 61
+ 386:	de b7       	in	r29, 0x3e	; 62
+	uint8_t i;
+	while(task_count)        // dopoki sa zadania w TASK_TABLE
+ 388:	4a c0       	rjmp	.+148    	; 0x41e <schedule+0xa0>
+	{
+		for(i = 0; i < task_count; ++i) {
+ 38a:	19 82       	std	Y+1, r1	; 0x01
+ 38c:	42 c0       	rjmp	.+132    	; 0x412 <schedule+0x94>
+			if(TASK_TABLE[i].ready != 0) {                // jesli odliczanie do wykonania zadania sie zakonczylo
+ 38e:	89 81       	ldd	r24, Y+1	; 0x01
+ 390:	88 2f       	mov	r24, r24
+ 392:	90 e0       	ldi	r25, 0x00	; 0
+ 394:	88 0f       	add	r24, r24
+ 396:	99 1f       	adc	r25, r25
+ 398:	88 0f       	add	r24, r24
+ 39a:	99 1f       	adc	r25, r25
+ 39c:	88 0f       	add	r24, r24
+ 39e:	99 1f       	adc	r25, r25
+ 3a0:	8c 58       	subi	r24, 0x8C	; 140
+ 3a2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 3a4:	fc 01       	movw	r30, r24
+ 3a6:	80 81       	ld	r24, Z
+ 3a8:	91 81       	ldd	r25, Z+1	; 0x01
+ 3aa:	00 97       	sbiw	r24, 0x00	; 0
+ 3ac:	79 f1       	breq	.+94     	; 0x40c <schedule+0x8e>
+				TASK_TABLE[i].function();        // to wykonaj zadanie
+ 3ae:	89 81       	ldd	r24, Y+1	; 0x01
+ 3b0:	88 2f       	mov	r24, r24
+ 3b2:	90 e0       	ldi	r25, 0x00	; 0
+ 3b4:	88 0f       	add	r24, r24
+ 3b6:	99 1f       	adc	r25, r25
+ 3b8:	88 0f       	add	r24, r24
+ 3ba:	99 1f       	adc	r25, r25
+ 3bc:	88 0f       	add	r24, r24
+ 3be:	99 1f       	adc	r25, r25
+ 3c0:	82 59       	subi	r24, 0x92	; 146
+ 3c2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 3c4:	fc 01       	movw	r30, r24
+ 3c6:	80 81       	ld	r24, Z
+ 3c8:	91 81       	ldd	r25, Z+1	; 0x01
+ 3ca:	fc 01       	movw	r30, r24
+ 3cc:	09 95       	icall
+				cli();
+ 3ce:	f8 94       	cli
+				TASK_TABLE[i].ready--;                // flaga ready jest zerowana
+ 3d0:	89 81       	ldd	r24, Y+1	; 0x01
+ 3d2:	88 2f       	mov	r24, r24
+ 3d4:	90 e0       	ldi	r25, 0x00	; 0
+ 3d6:	9c 01       	movw	r18, r24
+ 3d8:	22 0f       	add	r18, r18
+ 3da:	33 1f       	adc	r19, r19
+ 3dc:	22 0f       	add	r18, r18
+ 3de:	33 1f       	adc	r19, r19
+ 3e0:	22 0f       	add	r18, r18
+ 3e2:	33 1f       	adc	r19, r19
+ 3e4:	2c 58       	subi	r18, 0x8C	; 140
+ 3e6:	3f 4f       	sbci	r19, 0xFF	; 255
+ 3e8:	f9 01       	movw	r30, r18
+ 3ea:	20 81       	ld	r18, Z
+ 3ec:	31 81       	ldd	r19, Z+1	; 0x01
+ 3ee:	21 50       	subi	r18, 0x01	; 1
+ 3f0:	31 09       	sbc	r19, r1
+ 3f2:	88 0f       	add	r24, r24
+ 3f4:	99 1f       	adc	r25, r25
+ 3f6:	88 0f       	add	r24, r24
+ 3f8:	99 1f       	adc	r25, r25
+ 3fa:	88 0f       	add	r24, r24
+ 3fc:	99 1f       	adc	r25, r25
+ 3fe:	8c 58       	subi	r24, 0x8C	; 140
+ 400:	9f 4f       	sbci	r25, 0xFF	; 255
+ 402:	fc 01       	movw	r30, r24
+ 404:	31 83       	std	Z+1, r19	; 0x01
+ 406:	20 83       	st	Z, r18
+				sei();
+ 408:	78 94       	sei
+				break;
+ 40a:	09 c0       	rjmp	.+18     	; 0x41e <schedule+0xa0>
+void schedule()                // zarzadzanie zadaniami
+{
+	uint8_t i;
+	while(task_count)        // dopoki sa zadania w TASK_TABLE
+	{
+		for(i = 0; i < task_count; ++i) {
+ 40c:	89 81       	ldd	r24, Y+1	; 0x01
+ 40e:	8f 5f       	subi	r24, 0xFF	; 255
+ 410:	89 83       	std	Y+1, r24	; 0x01
+ 412:	80 91 6c 00 	lds	r24, 0x006C
+ 416:	99 81       	ldd	r25, Y+1	; 0x01
+ 418:	98 17       	cp	r25, r24
+ 41a:	08 f4       	brcc	.+2      	; 0x41e <schedule+0xa0>
+ 41c:	b8 cf       	rjmp	.-144    	; 0x38e <schedule+0x10>
+}
+
+void schedule()                // zarzadzanie zadaniami
+{
+	uint8_t i;
+	while(task_count)        // dopoki sa zadania w TASK_TABLE
+ 41e:	80 91 6c 00 	lds	r24, 0x006C
+ 422:	88 23       	and	r24, r24
+ 424:	09 f0       	breq	.+2      	; 0x428 <schedule+0xaa>
+ 426:	b1 cf       	rjmp	.-158    	; 0x38a <schedule+0xc>
+				sei();
+				break;
+			}
+		}
+	}
+}
+ 428:	0f 90       	pop	r0
+ 42a:	df 91       	pop	r29
+ 42c:	cf 91       	pop	r28
+ 42e:	08 95       	ret
+
+00000430 <update_counter>:
+
+// okresla, na ktorym wyswietlaczu ma byc teraz cos wyswietlane
+uint8_t display = 0;
+
+// zwieksza licznik o jeden 
+void update_counter(){
+ 430:	cf 93       	push	r28
+ 432:	df 93       	push	r29
+ 434:	cd b7       	in	r28, 0x3d	; 61
+ 436:	de b7       	in	r29, 0x3e	; 62
+	if(counter == 9999) 
+ 438:	80 91 6a 00 	lds	r24, 0x006A
+ 43c:	90 91 6b 00 	lds	r25, 0x006B
+ 440:	8f 30       	cpi	r24, 0x0F	; 15
+ 442:	27 e2       	ldi	r18, 0x27	; 39
+ 444:	92 07       	cpc	r25, r18
+ 446:	29 f4       	brne	.+10     	; 0x452 <update_counter+0x22>
+	{
+		counter = 0;
+ 448:	10 92 6b 00 	sts	0x006B, r1
+ 44c:	10 92 6a 00 	sts	0x006A, r1
+		return;
+ 450:	09 c0       	rjmp	.+18     	; 0x464 <update_counter+0x34>
+	}
+	counter++;
+ 452:	80 91 6a 00 	lds	r24, 0x006A
+ 456:	90 91 6b 00 	lds	r25, 0x006B
+ 45a:	01 96       	adiw	r24, 0x01	; 1
+ 45c:	90 93 6b 00 	sts	0x006B, r25
+ 460:	80 93 6a 00 	sts	0x006A, r24
+}
+ 464:	df 91       	pop	r29
+ 466:	cf 91       	pop	r28
+ 468:	08 95       	ret
+
+0000046a <display_counter>:
+// wyswietla jedna cyfre coutera na odpowiednim wyswietlaczu
+void display_counter()
+{
+ 46a:	cf 93       	push	r28
+ 46c:	df 93       	push	r29
+ 46e:	cd b7       	in	r28, 0x3d	; 61
+ 470:	de b7       	in	r29, 0x3e	; 62
+	// czyscimy
+	PORTB = 0x00;
+ 472:	88 e3       	ldi	r24, 0x38	; 56
+ 474:	90 e0       	ldi	r25, 0x00	; 0
+ 476:	dc 01       	movw	r26, r24
+ 478:	1c 92       	st	X, r1
+	PORTA = 0x00;
+ 47a:	8b e3       	ldi	r24, 0x3B	; 59
+ 47c:	90 e0       	ldi	r25, 0x00	; 0
+ 47e:	fc 01       	movw	r30, r24
+ 480:	10 82       	st	Z, r1
+	
+	if(display == 0)
+ 482:	80 91 6d 00 	lds	r24, 0x006D
+ 486:	88 23       	and	r24, r24
+ 488:	19 f5       	brne	.+70     	; 0x4d0 <display_counter+0x66>
+	{
+		PORTB = 0b11111110;
+ 48a:	88 e3       	ldi	r24, 0x38	; 56
+ 48c:	90 e0       	ldi	r25, 0x00	; 0
+ 48e:	2e ef       	ldi	r18, 0xFE	; 254
+ 490:	dc 01       	movw	r26, r24
+ 492:	2c 93       	st	X, r18
+		PORTA = digits[counter/1000];
+ 494:	4b e3       	ldi	r20, 0x3B	; 59
+ 496:	50 e0       	ldi	r21, 0x00	; 0
+ 498:	80 91 6a 00 	lds	r24, 0x006A
+ 49c:	90 91 6b 00 	lds	r25, 0x006B
+ 4a0:	96 95       	lsr	r25
+ 4a2:	87 95       	ror	r24
+ 4a4:	96 95       	lsr	r25
+ 4a6:	87 95       	ror	r24
+ 4a8:	96 95       	lsr	r25
+ 4aa:	87 95       	ror	r24
+ 4ac:	9c 01       	movw	r18, r24
+ 4ae:	a5 ec       	ldi	r26, 0xC5	; 197
+ 4b0:	b0 e2       	ldi	r27, 0x20	; 32
+ 4b2:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 4b6:	92 95       	swap	r25
+ 4b8:	82 95       	swap	r24
+ 4ba:	8f 70       	andi	r24, 0x0F	; 15
+ 4bc:	89 27       	eor	r24, r25
+ 4be:	9f 70       	andi	r25, 0x0F	; 15
+ 4c0:	89 27       	eor	r24, r25
+ 4c2:	80 5a       	subi	r24, 0xA0	; 160
+ 4c4:	9f 4f       	sbci	r25, 0xFF	; 255
+ 4c6:	fc 01       	movw	r30, r24
+ 4c8:	80 81       	ld	r24, Z
+ 4ca:	da 01       	movw	r26, r20
+ 4cc:	8c 93       	st	X, r24
+ 4ce:	9f c0       	rjmp	.+318    	; 0x60e <display_counter+0x1a4>
+	}
+	else if(display == 1)
+ 4d0:	80 91 6d 00 	lds	r24, 0x006D
+ 4d4:	81 30       	cpi	r24, 0x01	; 1
+ 4d6:	d1 f5       	brne	.+116    	; 0x54c <display_counter+0xe2>
+	{
+		PORTB = 0b11111101;
+ 4d8:	88 e3       	ldi	r24, 0x38	; 56
+ 4da:	90 e0       	ldi	r25, 0x00	; 0
+ 4dc:	2d ef       	ldi	r18, 0xFD	; 253
+ 4de:	fc 01       	movw	r30, r24
+ 4e0:	20 83       	st	Z, r18
+		PORTA = digits[(counter-(counter/1000)*1000)/100];
+ 4e2:	eb e3       	ldi	r30, 0x3B	; 59
+ 4e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 4e6:	40 91 6a 00 	lds	r20, 0x006A
+ 4ea:	50 91 6b 00 	lds	r21, 0x006B
+ 4ee:	ca 01       	movw	r24, r20
+ 4f0:	96 95       	lsr	r25
+ 4f2:	87 95       	ror	r24
+ 4f4:	96 95       	lsr	r25
+ 4f6:	87 95       	ror	r24
+ 4f8:	96 95       	lsr	r25
+ 4fa:	87 95       	ror	r24
+ 4fc:	9c 01       	movw	r18, r24
+ 4fe:	a5 ec       	ldi	r26, 0xC5	; 197
+ 500:	b0 e2       	ldi	r27, 0x20	; 32
+ 502:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 506:	92 95       	swap	r25
+ 508:	82 95       	swap	r24
+ 50a:	8f 70       	andi	r24, 0x0F	; 15
+ 50c:	89 27       	eor	r24, r25
+ 50e:	9f 70       	andi	r25, 0x0F	; 15
+ 510:	89 27       	eor	r24, r25
+ 512:	68 ee       	ldi	r22, 0xE8	; 232
+ 514:	73 e0       	ldi	r23, 0x03	; 3
+ 516:	86 9f       	mul	r24, r22
+ 518:	90 01       	movw	r18, r0
+ 51a:	87 9f       	mul	r24, r23
+ 51c:	30 0d       	add	r19, r0
+ 51e:	96 9f       	mul	r25, r22
+ 520:	30 0d       	add	r19, r0
+ 522:	11 24       	eor	r1, r1
+ 524:	ca 01       	movw	r24, r20
+ 526:	82 1b       	sub	r24, r18
+ 528:	93 0b       	sbc	r25, r19
+ 52a:	96 95       	lsr	r25
+ 52c:	87 95       	ror	r24
+ 52e:	96 95       	lsr	r25
+ 530:	87 95       	ror	r24
+ 532:	9c 01       	movw	r18, r24
+ 534:	ab e7       	ldi	r26, 0x7B	; 123
+ 536:	b4 e1       	ldi	r27, 0x14	; 20
+ 538:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 53c:	96 95       	lsr	r25
+ 53e:	87 95       	ror	r24
+ 540:	80 5a       	subi	r24, 0xA0	; 160
+ 542:	9f 4f       	sbci	r25, 0xFF	; 255
+ 544:	dc 01       	movw	r26, r24
+ 546:	8c 91       	ld	r24, X
+ 548:	80 83       	st	Z, r24
+ 54a:	61 c0       	rjmp	.+194    	; 0x60e <display_counter+0x1a4>
+	}
+	else if(display == 2)
+ 54c:	80 91 6d 00 	lds	r24, 0x006D
+ 550:	82 30       	cpi	r24, 0x02	; 2
+ 552:	89 f5       	brne	.+98     	; 0x5b6 <display_counter+0x14c>
+	{
+		PORTB = 0b11111011;
+ 554:	88 e3       	ldi	r24, 0x38	; 56
+ 556:	90 e0       	ldi	r25, 0x00	; 0
+ 558:	2b ef       	ldi	r18, 0xFB	; 251
+ 55a:	fc 01       	movw	r30, r24
+ 55c:	20 83       	st	Z, r18
+		PORTA = digits[(counter-(counter/100)*100)/10];
+ 55e:	eb e3       	ldi	r30, 0x3B	; 59
+ 560:	f0 e0       	ldi	r31, 0x00	; 0
+ 562:	40 91 6a 00 	lds	r20, 0x006A
+ 566:	50 91 6b 00 	lds	r21, 0x006B
+ 56a:	ca 01       	movw	r24, r20
+ 56c:	96 95       	lsr	r25
+ 56e:	87 95       	ror	r24
+ 570:	96 95       	lsr	r25
+ 572:	87 95       	ror	r24
+ 574:	9c 01       	movw	r18, r24
+ 576:	ab e7       	ldi	r26, 0x7B	; 123
+ 578:	b4 e1       	ldi	r27, 0x14	; 20
+ 57a:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 57e:	96 95       	lsr	r25
+ 580:	87 95       	ror	r24
+ 582:	64 e6       	ldi	r22, 0x64	; 100
+ 584:	68 9f       	mul	r22, r24
+ 586:	90 01       	movw	r18, r0
+ 588:	69 9f       	mul	r22, r25
+ 58a:	30 0d       	add	r19, r0
+ 58c:	11 24       	eor	r1, r1
+ 58e:	ca 01       	movw	r24, r20
+ 590:	82 1b       	sub	r24, r18
+ 592:	93 0b       	sbc	r25, r19
+ 594:	9c 01       	movw	r18, r24
+ 596:	ad ec       	ldi	r26, 0xCD	; 205
+ 598:	bc ec       	ldi	r27, 0xCC	; 204
+ 59a:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 59e:	96 95       	lsr	r25
+ 5a0:	87 95       	ror	r24
+ 5a2:	96 95       	lsr	r25
+ 5a4:	87 95       	ror	r24
+ 5a6:	96 95       	lsr	r25
+ 5a8:	87 95       	ror	r24
+ 5aa:	80 5a       	subi	r24, 0xA0	; 160
+ 5ac:	9f 4f       	sbci	r25, 0xFF	; 255
+ 5ae:	dc 01       	movw	r26, r24
+ 5b0:	8c 91       	ld	r24, X
+ 5b2:	80 83       	st	Z, r24
+ 5b4:	2c c0       	rjmp	.+88     	; 0x60e <display_counter+0x1a4>
+	}
+	else if(display == 3)
+ 5b6:	80 91 6d 00 	lds	r24, 0x006D
+ 5ba:	83 30       	cpi	r24, 0x03	; 3
+ 5bc:	41 f5       	brne	.+80     	; 0x60e <display_counter+0x1a4>
+	{
+		PORTB = 0b11110111;
+ 5be:	88 e3       	ldi	r24, 0x38	; 56
+ 5c0:	90 e0       	ldi	r25, 0x00	; 0
+ 5c2:	27 ef       	ldi	r18, 0xF7	; 247
+ 5c4:	fc 01       	movw	r30, r24
+ 5c6:	20 83       	st	Z, r18
+		PORTA = digits[counter%10];
+ 5c8:	eb e3       	ldi	r30, 0x3B	; 59
+ 5ca:	f0 e0       	ldi	r31, 0x00	; 0
+ 5cc:	40 91 6a 00 	lds	r20, 0x006A
+ 5d0:	50 91 6b 00 	lds	r21, 0x006B
+ 5d4:	9a 01       	movw	r18, r20
+ 5d6:	ad ec       	ldi	r26, 0xCD	; 205
+ 5d8:	bc ec       	ldi	r27, 0xCC	; 204
+ 5da:	0e 94 4b 03 	call	0x696	; 0x696 <__umulhisi3>
+ 5de:	96 95       	lsr	r25
+ 5e0:	87 95       	ror	r24
+ 5e2:	96 95       	lsr	r25
+ 5e4:	87 95       	ror	r24
+ 5e6:	96 95       	lsr	r25
+ 5e8:	87 95       	ror	r24
+ 5ea:	88 0f       	add	r24, r24
+ 5ec:	99 1f       	adc	r25, r25
+ 5ee:	9c 01       	movw	r18, r24
+ 5f0:	22 0f       	add	r18, r18
+ 5f2:	33 1f       	adc	r19, r19
+ 5f4:	22 0f       	add	r18, r18
+ 5f6:	33 1f       	adc	r19, r19
+ 5f8:	82 0f       	add	r24, r18
+ 5fa:	93 1f       	adc	r25, r19
+ 5fc:	9a 01       	movw	r18, r20
+ 5fe:	28 1b       	sub	r18, r24
+ 600:	39 0b       	sbc	r19, r25
+ 602:	c9 01       	movw	r24, r18
+ 604:	80 5a       	subi	r24, 0xA0	; 160
+ 606:	9f 4f       	sbci	r25, 0xFF	; 255
+ 608:	dc 01       	movw	r26, r24
+ 60a:	8c 91       	ld	r24, X
+ 60c:	80 83       	st	Z, r24
+	}
+	
+	
+	display ++;
+ 60e:	80 91 6d 00 	lds	r24, 0x006D
+ 612:	8f 5f       	subi	r24, 0xFF	; 255
+ 614:	80 93 6d 00 	sts	0x006D, r24
+	if(display % 4 == 0)
+ 618:	80 91 6d 00 	lds	r24, 0x006D
+ 61c:	83 70       	andi	r24, 0x03	; 3
+ 61e:	88 23       	and	r24, r24
+ 620:	11 f4       	brne	.+4      	; 0x626 <display_counter+0x1bc>
+		display = 0;
+ 622:	10 92 6d 00 	sts	0x006D, r1
+}
+ 626:	df 91       	pop	r29
+ 628:	cf 91       	pop	r28
+ 62a:	08 95       	ret
+
+0000062c <main>:
+
+int main(void)
+{
+ 62c:	0f 93       	push	r16
+ 62e:	1f 93       	push	r17
+ 630:	cf 93       	push	r28
+ 632:	df 93       	push	r29
+ 634:	cd b7       	in	r28, 0x3d	; 61
+ 636:	de b7       	in	r29, 0x3e	; 62
+	DDRA = 0xFF;
+ 638:	8a e3       	ldi	r24, 0x3A	; 58
+ 63a:	90 e0       	ldi	r25, 0x00	; 0
+ 63c:	2f ef       	ldi	r18, 0xFF	; 255
+ 63e:	fc 01       	movw	r30, r24
+ 640:	20 83       	st	Z, r18
+	DDRB = 0xFF;
+ 642:	87 e3       	ldi	r24, 0x37	; 55
+ 644:	90 e0       	ldi	r25, 0x00	; 0
+ 646:	2f ef       	ldi	r18, 0xFF	; 255
+ 648:	fc 01       	movw	r30, r24
+ 64a:	20 83       	st	Z, r18
+	
+	init_kernel();
+ 64c:	0e 94 74 01 	call	0x2e8	; 0x2e8 <init_kernel>
+	
+	addTask(*update_counter, 1000, 1);
+ 650:	01 e0       	ldi	r16, 0x01	; 1
+ 652:	10 e0       	ldi	r17, 0x00	; 0
+ 654:	20 e0       	ldi	r18, 0x00	; 0
+ 656:	30 e0       	ldi	r19, 0x00	; 0
+ 658:	48 ee       	ldi	r20, 0xE8	; 232
+ 65a:	53 e0       	ldi	r21, 0x03	; 3
+ 65c:	60 e0       	ldi	r22, 0x00	; 0
+ 65e:	70 e0       	ldi	r23, 0x00	; 0
+ 660:	88 e1       	ldi	r24, 0x18	; 24
+ 662:	92 e0       	ldi	r25, 0x02	; 2
+ 664:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <addTask>
+	addTask(*display_counter, 4, 1);
+ 668:	01 e0       	ldi	r16, 0x01	; 1
+ 66a:	10 e0       	ldi	r17, 0x00	; 0
+ 66c:	20 e0       	ldi	r18, 0x00	; 0
+ 66e:	30 e0       	ldi	r19, 0x00	; 0
+ 670:	44 e0       	ldi	r20, 0x04	; 4
+ 672:	50 e0       	ldi	r21, 0x00	; 0
+ 674:	60 e0       	ldi	r22, 0x00	; 0
+ 676:	70 e0       	ldi	r23, 0x00	; 0
+ 678:	85 e3       	ldi	r24, 0x35	; 53
+ 67a:	92 e0       	ldi	r25, 0x02	; 2
+ 67c:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <addTask>
+	
+	
+	setupTimer();
+ 680:	0e 94 5d 01 	call	0x2ba	; 0x2ba <setupTimer>
+	
+	schedule();
+ 684:	0e 94 bf 01 	call	0x37e	; 0x37e <schedule>
+	return 0;
+ 688:	80 e0       	ldi	r24, 0x00	; 0
+ 68a:	90 e0       	ldi	r25, 0x00	; 0
+ 68c:	df 91       	pop	r29
+ 68e:	cf 91       	pop	r28
+ 690:	1f 91       	pop	r17
+ 692:	0f 91       	pop	r16
+ 694:	08 95       	ret
+
+00000696 <__umulhisi3>:
+ 696:	a2 9f       	mul	r26, r18
+ 698:	b0 01       	movw	r22, r0
+ 69a:	b3 9f       	mul	r27, r19
+ 69c:	c0 01       	movw	r24, r0
+ 69e:	a3 9f       	mul	r26, r19
+ 6a0:	01 d0       	rcall	.+2      	; 0x6a4 <__umulhisi3+0xe>
+ 6a2:	b2 9f       	mul	r27, r18
+ 6a4:	70 0d       	add	r23, r0
+ 6a6:	81 1d       	adc	r24, r1
+ 6a8:	11 24       	eor	r1, r1
+ 6aa:	91 1d       	adc	r25, r1
+ 6ac:	08 95       	ret
+
+000006ae <_exit>:
+ 6ae:	f8 94       	cli
+
+000006b0 <__stop_program>:
+ 6b0:	ff cf       	rjmp	.-2      	; 0x6b0 <__stop_program>
